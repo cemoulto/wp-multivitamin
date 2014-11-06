@@ -9,7 +9,7 @@ function is_login_page() {
 function filter_menu_order($menu_ord) {
   if (!$menu_ord) return true;
   return array(
-    'example.php',
+    'example-1.php',
     'example-2.php'
   );
 }
