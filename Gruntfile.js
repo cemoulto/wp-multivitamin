@@ -4,8 +4,8 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		clean: {
-			styles: ['css/*.css'],
-			scripts: ['js/*.js']
+			styles: ['assets/css/*.css'],
+			scripts: ['assets/js/*.js']
 		},
 
 		concat: {
@@ -13,15 +13,15 @@ module.exports = function(grunt) {
 				separator: ';',
 			},
 			dist: {
-				src: ['js/src/plugins/*.js', 'js/src/*.js'],
-				dest: 'js/scripts.js'
+				src: ['assets/js/src/plugins/*.js', 'js/src/*.js'],
+				dest: 'assets/js/scripts.js'
 			}
 		},
 
 		uglify: {
 			build: {
-				src: 'js/scripts.js',
-				dest: 'js/scripts.min.js'
+				src: 'assets/js/scripts.js',
+				dest: 'assets/js/scripts.min.js'
 			}
 		},
 
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 							'*/'
 				},
 				files: {
-					'css/styles.css': 'css/src/vitamins.scss'
+					'assets/css/styles.css': 'assets/css/src/vitamins.scss'
 				}
 			}
 		},
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 				browsers: ['last 2 version', 'ie 8', 'ie 9']
 			},
 			no_dest: {
-				src: 'css/styles.css'
+				src: 'assets/css/styles.css'
 			}
 		},
 
@@ -73,18 +73,18 @@ module.exports = function(grunt) {
 
 		copy: {
 			styles: {
-				src: 'css/styles.min.css',
+				src: 'assets/css/styles.min.css',
 				dest: 'style.css'
 			},
 		},
 
 		watch: {
 			scripts: {
-				files: 'js/**/*.js',
+				files: 'assets/js/**/*.js',
 				tasks: ['clean:scripts', 'dist-js']
 			},
 			styles: {
-				files: 'css/**/*.scss',
+				files: 'assets/css/**/*.scss',
 				tasks: ['clean:styles', 'dist-css'],
 				options: {
 					livereload: true,
