@@ -4,45 +4,37 @@
 function init_css() {
   // Set Site Styles
   if (!is_admin() && !is_login_page()) {
-    // Define google font
+    // Define vendor styles
     wp_register_style(
-      $handle = 'fonts',
-      $src = "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://fonts.googleapis.com/css?family=Oswald:400,300,700",
+      $handle = 'site-css-vendors',
+      $src = get_bloginfo('template_directory') . '/assets/css/vendors.css',
       $deps = array(),
       $ver = false,
-      $media = all
-    );
-    // Define bootstrap styles
-    wp_register_style(
-      $handle = 'bootstrap',
-      $src = get_bloginfo('template_directory') . '/css/bootstrap.min.css',
-      $deps = array('fonts'),
-      $ver = false,
-      $media = screen
+      $media = 'screen'
     );
     // Define main styles
     wp_register_style(
-      $handle = 'styles',
-      $src = get_stylesheet_uri(),
-      $deps = array('fonts', 'bootstrap'),
+      $handle = 'site-css-styles',
+      $src = get_bloginfo('template_directory') . '/assets/css/styles.css',
+      $deps = array('site-css-vendors'),
       $ver = false,
-      $media = screen
+      $media = 'screen'
     );
     // Enqueue styles
-    wp_enqueue_style( 'fonts' );
-    wp_enqueue_style( 'bootstrap' );
-    wp_enqueue_style( 'styles' );
+    wp_enqueue_style( 'site-css-styles' );
+    wp_enqueue_style( 'site-css-vendors' );
   }
   // Set Admin Styles
   if (is_admin() || is_login_page()) {
     wp_register_style(
-      $handle = 'admin_styles',
+      $handle = 'admin-css-styles',
       $src = get_bloginfo('template_directory') . '/admin/admin.css',
       $deps = array(),
       $ver = false,
-      $media = screen
+      $media = 'screen'
     );
-    wp_enqueue_style( 'admin_styles' );
+    // Enqueue admin styles
+    wp_enqueue_style( 'admin-css-styles' );
   }
 }
 

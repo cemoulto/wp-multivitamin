@@ -4,41 +4,56 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		clean: {
-			styles: ['assets/css/*.css'],
-			scripts: ['assets/js/*.js']
+			css: {
+				styles: ['assets/css/styles.css', 'assets/css/styles.min.css', 'assets/css/styles.css.map'],
+				vendors: ['assets/css/vendors.css', 'assets/css/vendors.min.css', 'assets/css/vendors.css.map']
+			},
+			js: {
+				scripts: ['assets/js/scripts.js', 'assets/js/scripts.min.js'],
+				vendors: ['assets/js/vendors.js', 'assets/js/vendors.min.js']
+			}
 		},
 
 		concat: {
 			options: {
 				separator: ';',
 			},
-			dist: {
-				src: ['assets/js/src/plugins/*.js', 'js/src/*.js'],
+			scripts: {
+				src: ['assets/js/scripts/*.js'],
 				dest: 'assets/js/scripts.js'
-			}
+			},
+			vendors: {
+				src: ['assets/js/vendors/*.js'],
+				dest: 'assets/js/vendors.js'
+			},
 		},
 
 		uglify: {
-			build: {
+			scripts: {
 				src: 'assets/js/scripts.js',
 				dest: 'assets/js/scripts.min.js'
+			},
+			vendors: {
+				src: 'assets/js/vendors.js',
+				dest: 'assets/js/vendors.min.js'
 			}
 		},
 
 		sass: {
-			dist: {
+			styles: {
 				options: {
-					style: 'expanded',
-					banner: '/*\n' +
-							'Theme Name: <%= pkg.name %>\n' +
-							'Theme URI: <%= pkg.website %>\n' +
-							'Description: <%= pkg.description %>\n' +
-							'Version: <%= pkg.version %>\n' +
-							'Author: <%= pkg.author %>\n' +
-							'*/'
+					style: 'expanded'
 				},
 				files: {
-					'assets/css/styles.css': 'assets/css/src/vitamins.scss'
+					'assets/css/styles.css': 'assets/css/styles/styles.scss'
+				}
+			},
+			vendors: {
+				options: {
+					style: 'expanded'
+				},
+				files: {
+					'assets/css/vendors.css': 'assets/css/vendors/vendors.scss'
 				}
 			}
 		},
@@ -53,39 +68,41 @@ module.exports = function(grunt) {
 		},
 
 		cssmin: {
-			options: {
-				banner: '/*\n' +
-						'Theme Name: <%= pkg.name %>\n' +
-						'Theme URI: <%= pkg.website %>\n' +
-						'Description: <%= pkg.description %>\n' +
-						'Version: <%= pkg.version %>\n' +
-						'Author: <%= pkg.author %>\n' +
-						'*/'
-			},
-			minify: {
+			styles: {
 				expand: true,
-				cwd: 'css',
+				cwd: 'assets/css',
 				src: ['styles.css'],
-				dest: 'css',
+				dest: 'assets/css',
+				ext: '.min.css'
+			},
+			vendors: {
+				expand: true,
+				cwd: 'assets/css',
+				src: ['vendors.css'],
+				dest: 'assets/css',
 				ext: '.min.css'
 			}
 		},
 
-		copy: {
-			styles: {
-				src: 'assets/css/styles.min.css',
-				dest: 'style.css'
-			},
-		},
-
 		watch: {
-			scripts: {
-				files: 'assets/js/**/*.js',
-				tasks: ['clean:scripts', 'dist-js']
+			js_scripts: {
+				files: 'assets/js/scripts/**/*.js',
+				tasks: 'dist-js-styles'
 			},
-			styles: {
-				files: 'assets/css/**/*.scss',
-				tasks: ['clean:styles', 'dist-css'],
+			js_vendors: {
+				files: 'assets/js/vendors/**/*.js',
+				tasks: 'dist-js-vendors'
+			},
+			css_styles: {
+				files: 'assets/css/styles/**/*.scss',
+				tasks: 'dist-css-styles',
+				options: {
+					livereload: true,
+				}
+			},
+			js_vendors: {
+				files: 'assets/css/vendors/**/*.scss',
+				tasks: 'dist-css-vendors',
 				options: {
 					livereload: true,
 				}
@@ -107,10 +124,22 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// JS distribution task
-	grunt.registerTask('dist-js', ['clean:scripts', 'concat', 'uglify']);
+	grunt.registerTask('dist-js', ['dist-js-scripts', 'dist-js-vendors']);
+
+	// JS Scripts distribution task
+	grunt.registerTask('dist-js-scripts', ['clean:js:scripts', 'concat:scripts', 'uglify:scripts']);
+
+	// JS Vendors distribution task
+	grunt.registerTask('dist-js-vendors', ['clean:js:vendors', 'concat:vendors', 'uglify:vendors']);
 
 	// CSS distribution task
-	grunt.registerTask('dist-css', ['clean:styles', 'sass', 'autoprefixer', 'cssmin', 'copy:styles']);
+	grunt.registerTask('dist-css', ['dist-css-styles', 'dist-css-vendors']);
+
+	// CSS Styles distribution task
+	grunt.registerTask('dist-css-styles', ['clean:css:styles', 'sass:styles', 'autoprefixer', 'cssmin:styles']);
+
+	// CSS Vendors distribution task
+	grunt.registerTask('dist-css-vendors', ['clean:css:vendors', 'sass:vendors', 'cssmin:vendors']);
 
 	// Full distribution task
 	grunt.registerTask('dist', ['dist-css', 'dist-js']);

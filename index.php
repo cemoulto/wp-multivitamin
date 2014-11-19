@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<h1>Index/Archive View</h1>
+<h1>Index View</h1>
 
 <?php if ( have_posts() ): ?>
   <?php while ( have_posts() ) : the_post(); ?>

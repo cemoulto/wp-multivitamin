@@ -1,7 +1,7 @@
 {
-	"name": "Multivitamin for Wordpress",
+	"name": "wp_multivitamin",
 	"version": "0.1.0",
-	"website": "https://github.com/stefanerickson/multivitamin-wp",
+	"website": "https://github.com/stefanerickson/wp_multivitamin",
 	"description": "Starting point for custom theme making using Multivitamin.",
 	"author": "Stefan Erickson",
 	"devDependencies": {
