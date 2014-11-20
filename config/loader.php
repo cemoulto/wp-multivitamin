@@ -8,4 +8,10 @@ foreach ( glob($function_path['dirname'] . '/*.php') as $file) {
 	}
 }
 
+foreach ( glob($function_path['dirname'] . '/**/*.php') as $file) {
+	if ( basename($file) !== 'loader.php' ) {
+		include $file;
+	}
+}
+
 ?>
