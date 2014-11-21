@@ -1,20 +1,42 @@
 <?php
 
 /*
- * Disable admin bar
+ * Globally hide top admin bar
  * -------------------------------------------------------------------------- */
 
+/*
 function remove_admin_bar() {
 	add_filter( 'show_admin_bar', '__return_false' );
 	function hide_admin_bar() {
-		echo '<style>
-			html { padding-top: 0 !important; }
-			div#wpadminbar { display: none; }
+		echo '<style type="text/css">
+			#wpadminbar {
+				display: none !important;
+			}
+			html {
+				padding-top: 0 !important;
+			}
+			@media screen and (max-width: 782px) {
+				#wpadminbar {
+					display: block !important;
+				}
+				html {
+					padding-top: 46px !important;
+				}
+			}
+			@media screen and (max-width: 600px) {
+				#wpadminbar {
+					display: block !important;
+				}
+				html {
+					padding-top: 0 !important;
+				}
+			}
 		</style>';
 	}
-	add_action('admin_head', 'hide_admin_bar');
+	add_action( 'admin_head', 'hide_admin_bar' );
 }
 add_action('init', 'remove_admin_bar');
+*/
 
 /*
  * Remove items from admin bar navigation
