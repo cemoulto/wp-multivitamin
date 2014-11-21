@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Load styles
+ * -------------------------------------------------------------------------- */
+
 // Register and Enqueue Styles
 function init_css() {
   // Set Site Styles

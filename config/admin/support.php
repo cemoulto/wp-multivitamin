@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Define theme support
+ * -------------------------------------------------------------------------- */
+
 // Theme Support
 add_theme_support('post-thumbnails');
 add_theme_support('menus');

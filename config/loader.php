@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Loads all config files
+ * -------------------------------------------------------------------------- */
+
 $function_path = pathinfo(__FILE__);
 
 foreach ( glob($function_path['dirname'] . '/*.php') as $file) {

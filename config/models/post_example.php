@@ -30,7 +30,4 @@ function post_example() {
   register_post_type('post_example', $args);
 }
 
-// Initialize Post
-add_action('init', 'post_example');
-
 ?>

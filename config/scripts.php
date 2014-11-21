@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Load scripts
+ * -------------------------------------------------------------------------- */
+
 // Register and Enqueue Scripts
 function init_js() {
   // Set Site Scripts

@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Custom body classes
+ * -------------------------------------------------------------------------- */
+
 // Add User Role class to body for Admin
 function user_role_class($classes) {
   global $current_user;
