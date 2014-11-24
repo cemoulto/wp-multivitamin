@@ -55,7 +55,7 @@ function init_js() {
     // Define main admin scripts
     wp_register_script(
       $handle = 'admin-js-scripts',
-      $src = get_bloginfo('template_directory') . '/admin/admin.js',
+      $src = get_bloginfo('template_directory') . '/assets/js/admin.js',
       $deps = array('jquery'),
       $ver = false
     );

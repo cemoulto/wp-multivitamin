@@ -34,7 +34,7 @@ function init_css() {
     // Define main admin styles
     wp_register_style(
       $handle = 'admin-css-styles',
-      $src = get_bloginfo('template_directory') . '/admin/admin.css',
+      $src = get_bloginfo('template_directory') . '/assets/css/admin.css',
       $deps = array(),
       $ver = false,
       $media = 'screen'
