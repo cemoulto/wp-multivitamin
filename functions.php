@@ -22,6 +22,6 @@ require_once('config/loader.php');
 // add_action('init', 'admin_menu_order');
 
 // Post type additions
-// add_action('init', 'post_example');
+// add_action('init', 'post_type_example');
 
 ?>

@@ -1,9 +1,9 @@
 <?php
 
 // Define Post
-function post_example() {
-  $singular = 'Post Example';
-  $plural ='Post Examples';
+function post_type_example() {
+  $singular = 'Example';
+  $plural ='Examples';
   $labels = array(
     'name'               => _x( $plural, 'post type general name' ),
     'singular_name'      => _x( $singular, 'post type singular name' ),
@@ -27,7 +27,7 @@ function post_example() {
     'supports'      => array('title'),
     'has_archive'   => true,
   );
-  register_post_type('post_example', $args);
+  register_post_type('example', $args);
 }
 
 ?>
