@@ -8,23 +8,23 @@ function init_css() {
 
     // Define vendor styles
     wp_register_style(
-      $handle = 'site-css-vendors',
+      $handle = 'site-vendors',
       $src = get_bloginfo('template_directory') . '/assets/css/vendors.css',
       $deps = array(),
       $ver = null,
       $media = 'screen'
     );
-    wp_enqueue_style( 'site-css-styles' );
+    wp_enqueue_style('site-styles');
 
     // Define main styles
     wp_register_style(
-      $handle = 'site-css-styles',
+      $handle = 'site-styles',
       $src = get_bloginfo('template_directory') . '/assets/css/styles.css',
-      $deps = array('site-css-vendors'),
+      $deps = array('site-vendors'),
       $ver = null,
       $media = 'screen'
     );
-    wp_enqueue_style( 'site-css-vendors' );
+    wp_enqueue_style('site-vendors');
 
   }
 
@@ -33,13 +33,13 @@ function init_css() {
 
     // Define main admin styles
     wp_register_style(
-      $handle = 'admin-css-styles',
+      $handle = 'admin-styles',
       $src = get_bloginfo('template_directory') . '/assets/css/admin.css',
       $deps = array(),
       $ver = null,
       $media = 'screen'
     );
-    wp_enqueue_style( 'admin-css-styles' );
+    wp_enqueue_style('admin-styles');
 
   }
 }
