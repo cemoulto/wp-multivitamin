@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": ";;;;AAOA,YAAa;EACX,OAAO,EAAE,kCAAkC",
+"sources": ["vendors/vendors.scss"],
 "names": [],
 "file": "vendors.css"
 }

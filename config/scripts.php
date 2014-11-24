@@ -1,13 +1,11 @@
 <?php
 
-/*
- * Load scripts
- * -------------------------------------------------------------------------- */
-
 // Register and Enqueue Scripts
 function init_js() {
+
   // Set Site Scripts
   if (!is_admin() && !is_login_page()) {
+
     // Redfine jQuery
     wp_deregister_script('jquery');
     wp_register_script(
@@ -17,6 +15,8 @@ function init_js() {
       $ver = false,
       $in_footer = true
     );
+    wp_enqueue_script( 'site-js-jquery' );
+
     // Define Modernizr
     wp_register_script(
       $handle = 'site-js-modernizr',
@@ -25,6 +25,8 @@ function init_js() {
       $ver = false,
       $in_footer = false
     );
+    wp_enqueue_script( 'site-js-modernizr' );
+
     // Define main vendor scripts
     wp_register_script(
       $handle = 'site-js-vendors',
@@ -33,6 +35,8 @@ function init_js() {
       $ver = false,
       $in_footer = true
     );
+    wp_enqueue_script( 'site-js-vendors' );
+
     // Define main scripts file
     wp_register_script(
       $handle = 'site-js-scripts',
@@ -41,23 +45,24 @@ function init_js() {
       $ver = false,
       $in_footer = true
     );
-    // Enqueue scripts
-    wp_enqueue_script( 'site-js-jquery' );
-    wp_enqueue_script( 'site-js-modernizr' );
-    wp_enqueue_script( 'site-js-vendors' );
     wp_enqueue_script( 'site-js-scripts' );
+
   }
+
   // Set Admin Scripts
   if (is_admin() || is_login_page()) {
+
+    // Define main admin scripts
     wp_register_script(
       $handle = 'admin-js-scripts',
       $src = get_bloginfo('template_directory') . '/admin/admin.js',
       $deps = array('jquery'),
       $ver = false
     );
-    // Enqueue admin scripts
     wp_enqueue_script( 'admin-js-scripts' );
+
   }
+
 }
 
 // Initialize Scripts

@@ -1,5 +1,6 @@
 <?php
 
+// Set admin menu order
 function admin_menu_order() {
   function order($menu_ord) {
     if (!$menu_ord) return true;
@@ -21,7 +22,7 @@ function admin_menu_order() {
       'separator-last', // Last separator
     );
   }
-  add_filter('custom_menu_order', 'order'); // Activate custom_menu_order
+  add_filter('custom_menu_order', 'order');
   add_filter('menu_order', 'order');
 }
 
