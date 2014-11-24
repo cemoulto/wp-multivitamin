@@ -12,7 +12,7 @@ function init_js() {
       $handle = 'site-js-jquery',
       $src = "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
       $deps = array(),
-      $ver = false,
+      $ver = null,
       $in_footer = true
     );
     wp_enqueue_script( 'site-js-jquery' );
@@ -22,7 +22,7 @@ function init_js() {
       $handle = 'site-js-modernizr',
       $src = "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.1.js",
       $deps = array(),
-      $ver = false,
+      $ver = null,
       $in_footer = false
     );
     wp_enqueue_script( 'site-js-modernizr' );
@@ -32,7 +32,7 @@ function init_js() {
       $handle = 'site-js-vendors',
       $src = get_bloginfo('template_directory') . '/assets/js/vendors.js',
       $deps = array('site-js-jquery'),
-      $ver = false,
+      $ver = null,
       $in_footer = true
     );
     wp_enqueue_script( 'site-js-vendors' );
@@ -42,7 +42,7 @@ function init_js() {
       $handle = 'site-js-scripts',
       $src = get_bloginfo('template_directory') . '/assets/js/scripts.js',
       $deps = array('site-js-jquery', 'site-js-vendors'),
-      $ver = false,
+      $ver = null,
       $in_footer = true
     );
     wp_enqueue_script( 'site-js-scripts' );
@@ -57,7 +57,8 @@ function init_js() {
       $handle = 'admin-js-scripts',
       $src = get_bloginfo('template_directory') . '/assets/js/admin.js',
       $deps = array('jquery'),
-      $ver = false
+      $ver = null,
+      $in_footer = true
     );
     wp_enqueue_script( 'admin-js-scripts' );
 

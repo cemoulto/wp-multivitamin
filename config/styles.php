@@ -11,7 +11,7 @@ function init_css() {
       $handle = 'site-css-vendors',
       $src = get_bloginfo('template_directory') . '/assets/css/vendors.css',
       $deps = array(),
-      $ver = false,
+      $ver = null,
       $media = 'screen'
     );
     wp_enqueue_style( 'site-css-styles' );
@@ -21,7 +21,7 @@ function init_css() {
       $handle = 'site-css-styles',
       $src = get_bloginfo('template_directory') . '/assets/css/styles.css',
       $deps = array('site-css-vendors'),
-      $ver = false,
+      $ver = null,
       $media = 'screen'
     );
     wp_enqueue_style( 'site-css-vendors' );
@@ -36,7 +36,7 @@ function init_css() {
       $handle = 'admin-css-styles',
       $src = get_bloginfo('template_directory') . '/assets/css/admin.css',
       $deps = array(),
-      $ver = false,
+      $ver = null,
       $media = 'screen'
     );
     wp_enqueue_style( 'admin-css-styles' );
